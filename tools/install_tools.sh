@@ -35,9 +35,14 @@ go install github.com/tomnomnom/anew@latest
 
 # Instalar Findomain (Rust)
 echo -e "\033[1;34m[+] Instalando Findomain...\033[0m"
-wget https://github.com/findomain/findomain/releases/latest/download/findomain-linux -O /tmp/findomain
-chmod +x /tmp/findomain
-sudo mv /tmp/findomain /usr/local/bin/findomain
+latest_url=$(curl -s https://api.github.com/repos/findomain/findomain/releases/latest | grep "browser_download_url.*findomain-linux" | cut -d '"' -f 4)
+if [ -n "$latest_url" ]; then
+    wget "$latest_url" -O /tmp/findomain
+    chmod +x /tmp/findomain
+    sudo mv /tmp/findomain /usr/local/bin/findomain
+else
+    echo -e "\033[1;31m[!] Não foi possível encontrar a release mais recente do Findomain!\033[0m"
+fi
 
 # Baixar wordlists
 echo -e "\033[1;34m[+] Baixando wordlists...\033[0m"

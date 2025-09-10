@@ -70,11 +70,11 @@ if [ ! -f config.env ]; then
 fi
 
 # Tornar o script principal executável
-chmod +x massive-finder.sh
+chmod +x massivefinder.sh
 
-# Configurar alias no bashrc
-if ! grep -q "alias massive-finder" ~/.bashrc; then
-    echo "alias massive-finder='$(pwd)/massive-finder.sh'" >> ~/.zshrc
+# Configurar alias no zshrc
+if ! grep -q "alias massivefinder" ~/.zshrc; then
+    echo "alias massivefinder='$(pwd)/massivefinder.sh'" >> ~/.zshrc
     echo -e "\033[1;34m[+] Alias 'massivefinder' adicionado ao ~/.zshrc\033[0m"
     echo -e "\033[1;33m[!] Execute 'source ~/.zshrc' ou reinicie o terminal\033[0m"
 fi
